@@ -35,5 +35,3 @@ def test_complete_todo():
     browser.element('table>tbody>tr:nth-child(8)>td:nth-child(2)').should(have.text('clover.jpg'))
     browser.element('table>tbody>tr:nth-child(9)>td:nth-child(2)').should(have.text('Thailand, Phuket'))
     browser.element('table>tbody>tr:nth-child(10)>td:nth-child(2)').should(have.text('Haryana Panipat'))
-
-    browser.element('#closeLargeModal').click()
