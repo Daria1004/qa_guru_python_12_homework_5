@@ -1,7 +1,7 @@
 from selene import browser, be, have
 import os
 
-def test_complete_todo():
+def test_complete_todo(browser_management):
     browser.open('/automation-practice-form')
     browser.element('.text-center').should(have.text('Practice Form'))
 
@@ -18,13 +18,11 @@ def test_complete_todo():
     browser.element('[for="hobbies-checkbox-3"]').click()
     browser.element('#uploadPicture').send_keys(os.path.abspath('clover.jpg'))
     browser.element('#currentAddress').set_value('Thailand, Phuket')
-    browser.element('#state').click()
     browser.element('#react-select-3-input').set_value('Haryana').press_enter()
-    browser.element('#city').click()
     browser.element('#react-select-4-input').set_value('Panipat').press_enter()
     browser.element('#submit').click()
 
-    browser.element('.modal-title h4').should(have.text('Thanks for submitting the form'))
+    browser.element('.modal-title.h4').should(have.text('Thanks for submitting the form'))
     browser.element('table>tbody>tr:nth-child(1)>td:nth-child(2)').should(have.text('Ivan Durian'))
     browser.element('table>tbody>tr:nth-child(2)>td:nth-child(2)').should(have.text('ID@gmail.com'))
     browser.element('table>tbody>tr:nth-child(3)>td:nth-child(2)').should(have.text('Other'))
