@@ -1,4 +1,4 @@
-from selene import browser, be, have
+from selene import browser, be, have, command
 import os
 
 def test_complete_todo(browser_management):
@@ -20,7 +20,8 @@ def test_complete_todo(browser_management):
     browser.element('#currentAddress').set_value('Thailand, Phuket')
     browser.element('#react-select-3-input').set_value('Haryana').press_enter()
     browser.element('#react-select-4-input').set_value('Panipat').press_enter()
-    browser.element('#submit').click()
+    browser.element('#submit').perform(command.js.scroll_into_view).click()
+    # browser.element('#submit').click()
 
     browser.element('.modal-title.h4').should(have.text('Thanks for submitting the form'))
     browser.element('table>tbody>tr:nth-child(1)>td:nth-child(2)').should(have.text('Ivan Durian'))
